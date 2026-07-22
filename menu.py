@@ -78,7 +78,8 @@ def admin_menu():
         print("2. View Trains")
         print("3. Update Train")
         print("4. Delete Train")
-        print("5. Logout")
+        print("5. View all users")
+        print("6. Logout")
 
         choice = input("Enter Choice : ")
 
@@ -93,8 +94,10 @@ def admin_menu():
 
         elif choice == "4":
             TrainService.delete_train()
-
         elif choice == "5":
+            AdminService.view_all_users()
+
+        elif choice == "6":
             print("Admin Logged Out.")
             break
 
