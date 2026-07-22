@@ -1,5 +1,23 @@
+# Python
 __pycache__/
-*.pyc
-.idea/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
 venv/
+.venv/
+
+# PyCharm
+.idea/
+
+# SQLite Database
 railway.db
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
