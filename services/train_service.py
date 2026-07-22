@@ -1,5 +1,9 @@
 from database import get_connection
-
+from utils.validation import (
+    valid_train_name,
+    valid_location,
+    valid_time
+)
 
 class TrainService:
 
@@ -12,13 +16,39 @@ class TrainService:
         print("\n========== ADD TRAIN ==========\n")
 
         train_number = int(input("Train Number : "))
-        train_name = input("Train Name : ")
-        origin = input("Origin : ")
-        destination = input("Destination : ")
-        departure = input("Departure Time : ")
-        arrival = input("Arrival Time : ")
+        train_name = input("Train Name : ").strip()
+        origin = input("Origin : ").strip()
+        destination = input("Destination : ").strip()
+        # departure = input("Departure : ").strip()
+        departure = input("Departure Time : ").strip()
+        arrival = input("Arrival Time : ").strip()
         seats = int(input("Available Seats : "))
         fare = float(input("Fare : "))
+
+        if not valid_train_name(train_name):
+            print("Invalid Train Name.")
+            conn.close()
+            return
+
+        if not valid_location(origin):
+            print("Invalid Origin.")
+            conn.close()
+            return
+
+        if not valid_location(destination):
+            print("Invalid Destination.")
+            conn.close()
+            return
+
+        if not valid_time(departure):
+            print("Departure time should be in HH:MM format.")
+            conn.close()
+            return
+
+        if not valid_time(arrival):
+            print("Arrival time should be in HH:MM format.")
+            conn.close()
+            return
 
         cursor.execute("""
         SELECT *

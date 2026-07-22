@@ -13,14 +13,14 @@ class AuthService:
 
         print("\n========== USER REGISTRATION ==========\n")
 
-        username = input("Enter Username : ")
+        username = input("Enter Username : ").strip()
 
         if not valid_username(username):
             print("Username should be less than 50 characters.")
             conn.close()
             return
 
-        email = input("Enter Email : ")
+        email = input("Enter Email : ").strip()
 
         if not valid_email(email):
             print("Invalid Email.")
@@ -38,21 +38,27 @@ class AuthService:
             conn.close()
             return
 
-        password = input("Enter Password (6-12 chars): ")
+        password = input("Enter Password (6-12 chars): ").strip()
 
         if not valid_password(password):
-            print("Password must be between 6 and 12 characters.")
+            print("\nPassword does not meet the requirements.")
+            print("Password must:")
+            print("- Be between 6 and 12 characters")
+            print("- Contain at least one uppercase letter")
+            print("- Contain at least one lowercase letter")
+            print("- Contain at least one digit")
+            print("- Contain at least one special character")
             conn.close()
             return
 
-        address = input("Enter Address : ")
+        address = input("Enter Address : ").strip()
 
         if not valid_address(address):
             print("Address too long.")
             conn.close()
             return
 
-        contact = input("Enter Contact Number : ")
+        contact = input("Enter Contact Number : ").strip()
 
         if not valid_contact(contact):
             print("Contact must be 10 digits.")
